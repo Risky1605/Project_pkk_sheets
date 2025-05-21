@@ -13,55 +13,143 @@
   --color-supporting-color-high: #0948ce;
   --color-supporting-color-medium: #3473f8;
   --color-supporting-color-low: #5c8ffa;
+  --text-base: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 /* ? DEFAULT CUSTOM ELEMEN STYLE */
 @layer base {
   h1 {
-    @apply text-4xl font-bold text-gray-900 leading-tight;
+    @apply text-[4rem] font-bold bg-gradient-to-r from-primary to-secondary/50 bg-clip-text text-transparent leading-tight font-Montserrat;
   }
 
   h2 {
-    @apply text-3xl font-semibold text-gray-800;
+    @apply text-3xl font-semibold text-gray-800 font-Montserrat;
   }
 
   h3 {
-    @apply text-2xl font-semibold text-gray-700;
+    @apply text-2xl font-semibold text-gray-700 font-Montserrat;
   }
   p {
-    @apply text-base text-gray-600 leading-relaxed;
+    @apply text-base text-gray-600 leading-relaxed font-Hind;
   }
 
   a {
-    @apply text-blue-600 underline underline-offset-2 hover:text-blue-800;
+    @apply text-blue-600 underline underline-offset-2 hover:text-blue-800 font-Hind;
   }
 
   ul {
-    @apply list-disc list-inside text-gray-600;
+    @apply list-disc list-inside text-gray-600 font-Hind;
   }
 
   ol {
-    @apply list-decimal list-inside text-gray-600;
+    @apply list-decimal list-inside text-gray-600 font-Hind;
   }
 
   button {
-    @apply px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600;
+    @apply px-4 py-2 rounded-md bg-primary text-white font-Hind font-semibold text-lg text-[1rem] cursor-pointer;
   }
 
   /* Input dan textarea */
   input,
   textarea,
   select {
-    @apply border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500;
+    @apply border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 font-Hind;
   }
 
   /* Strong / bold */
   strong {
-    @apply font-semibold text-gray-900;
+    @apply font-semibold text-gray-900 font-Hind;
   }
 
   /* Code block */
   code {
-    @apply font-mono bg-gray-100 text-red-600 px-1 py-0.5 rounded;
+    @apply bg-gray-100 text-red-600 px-1 py-0.5 rounded font-Hind;
+  }
+}
+
+@layer components {
+  .btn-signUp {
+    @apply px-[1.2rem] py-[0.5rem] bg-supporting-color-low/20 border-2 border-primary/20 rounded-md  text-primary hidden md:flex items-center justify-center gap-2;
+  }
+
+  .btn-signIn {
+    @apply text-primary bg-transparent hidden md:block;
+  }
+
+  .btn-Hamburger {
+    @apply px-[1rem] py-[0.5rem] bg-supporting-color-low/20 border-2 border-primary/20 rounded-md  text-primary md:hidden flex items-center justify-center gap-2 z-50;
+  }
+
+  .btn-joinUs {
+    @apply px-[1rem] py-[0.5rem] bg-supporting-color-low/20 border-2 border-primary/20 rounded-md  text-primary flex items-center justify-center gap-2;
+  }
+
+  .btn-card {
+    @apply px-[0.4rem] py-[0.4rem] bg-supporting-color-low/20 border-2 border-primary/20 rounded-md  text-primary flex items-center justify-center gap-2;
+  }
+
+  .btn-card-experince {
+    @apply p-[0.6rem] bg-supporting-color-low/20 border-2 border-primary/20 rounded-md  text-primary w-fit;
+  }
+
+  .box-image-experince {
+    @apply p-[0.6rem] bg-supporting-color-low/20 border-2 border-primary/20 rounded-md  text-primary flex items-center justify-center gap-2;
+  }
+
+  .box-biggets-experince {
+    @apply p-[0.6rem] bg-supporting-color-low/20 border-2 border-primary/20 rounded-md  text-primary;
+  }
+
+  .comment-box {
+    @apply relative bg-white border border-primary/20 rounded-md  text-primary break-inside-avoid flex flex-col gap-[0.5rem] w-80 md:w-fit p-[1rem] z-10;
+  }
+}
+
+@layer utilities {
+  .conic-custom {
+    background: conic-gradient(
+      var(--color-supporting-color-high),
+      var(--color-supporting-color-low),
+      transparent 80deg
+    );
+    position: absolute;
+
+    @apply -inset-32;
+  }
+
+  .animate-border-glowSpin {
+    animation: glowSpin 2s linear infinite;
+    animation-play-state: paused;
+  }
+
+  .trigger-conic {
+    @apply relative bg-white rounded-md z-10 flex justify-center items-center;
+  }
+
+  .trigger-conic:hover + .animate-border-glowSpin {
+    animation-play-state: running;
+  }
+
+  .comment-box:hover + .animate-border-glowSpin {
+    animation-play-state: running;
+  }
+
+  @keyframes glowSpin {
+    0% {
+      transform: rotate(0deg);
+      box-shadow: 0 0 5px #0c57f5;
+    }
+    100% {
+      transform: rotate(360deg);
+      box-shadow: 0 0 20px #5c8ffa;
+    }
+  }
+
+  .ultimate-z {
+    z-index: 100000000;
   }
 }
